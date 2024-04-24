@@ -6,8 +6,11 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 
-renderer.setClearColor("0xEEEEEE");
+renderer.setClearColor(0xEEEEEE);
 renderer.setSize(window.innerWidth, window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
 
 // creating axes helper
 const axes = new THREE.AxesHelper(20);
@@ -28,8 +31,8 @@ plane.position.z = 0;
 scene.add(plane);
 
 const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000});
-// const cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xff0000});
+// const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000});
+const cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xff0000});
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
 cube.position.x = -4;
@@ -40,8 +43,8 @@ scene.add(cube);
 
 
 const sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
-const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x7777ff });
-// const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x7777ff });
+// const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x7777ff });
+const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x7777ff });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
 sphere.position.x = 20;
@@ -66,10 +69,10 @@ controls.dynamicDampingFactor = 0.15;
 
 
 
-document.body.appendChild(renderer.domElement);
 
 const render = function () {
     requestAnimationFrame(render);
     controls.update();
     renderer.render(scene, camera);
 }
+render();
