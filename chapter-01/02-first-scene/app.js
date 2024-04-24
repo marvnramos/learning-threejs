@@ -53,6 +53,6 @@ camera.position.z = 30;
 camera.lookAt(scene.position);
 
 
-console.log('scene', scene);
-
 document.body.appendChild(renderer.domElement);
+
+renderer.render(scene, camera);
