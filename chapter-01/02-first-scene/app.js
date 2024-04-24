@@ -1,13 +1,12 @@
-import * as THREE from 'three';
-import { TrackballControls } from 'three/examples/jsm/Addons.js';
+import * as THREE from './node_modules/three/build/three.module.js';
+// import { TrackballControls } from '../node_modules/three/examples/jsm/controls/TrackballControls.js';
 
 // creating scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 
-renderer.setClearcolorHex();
-renderer.setClearColor(new THREE.Color(0x000000));
+renderer.setClearColor("0xEEEEEE");
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 // creating axes helper
@@ -57,4 +56,3 @@ camera.lookAt(scene.position);
 console.log('scene', scene);
 
 document.body.appendChild(renderer.domElement);
-renderer.render(scene, camera);
