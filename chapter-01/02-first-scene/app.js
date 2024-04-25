@@ -8,7 +8,6 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 
 renderer.setClearColor(0xEEEEEE);
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.shadowMap.enabled = true; // Cambiado a shadowMap.enabled
 
 document.body.appendChild(renderer.domElement);
 
@@ -26,7 +25,6 @@ plane.position.x = 15;
 plane.position.y = 0;
 plane.position.z = 0;
 
-plane.receiveShadow = true;
 scene.add(plane);
 
 // Cubo
@@ -38,7 +36,6 @@ cube.position.x = -4;
 cube.position.y = 3;
 cube.position.z = 0;
 
-cube.castShadow = true; // Habilitar sombra
 scene.add(cube);
 
 // Esfera
@@ -47,7 +44,6 @@ const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x7777ff });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
 sphere.position.set(20, 4, 2);
-sphere.castShadow = true;
 scene.add(sphere);
 
 camera.position.x = -30;
@@ -55,15 +51,37 @@ camera.position.y = 40;
 camera.position.z = 30;
 camera.lookAt(scene.position);
 
-// Luz puntual
-const spotLight = new THREE.SpotLight(0xffffff);
-spotLight.position.set(-40, 60, -10);
-spotLight.castShadow = true;
-scene.add(spotLight);
 
-// Luz ambiental
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
+// Creando la luz direccional
+// Agregar una luz direccional para simular la luz del sol
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(50, 50, 50);
+directionalLight.castShadow = true; // Permitir que la luz emita sombras
+scene.add(directionalLight);
+
+// Configurar propiedades de sombra para la luz direccional
+directionalLight.shadow.mapSize.width = window.innerWidth; // Resolución del mapa de sombras
+directionalLight.shadow.mapSize.height = window.innerHeight;
+directionalLight.shadow.camera.top = 50;
+directionalLight.shadow.camera.bottom = -50;
+directionalLight.shadow.camera.left = -50;
+directionalLight.shadow.camera.right = 50;
+directionalLight.shadow.camera.near = 0.5; // Distancia cercana de la cámara de sombras
+directionalLight.shadow.camera.far = 200; // Distancia lejana de la cámara de sombras
+
+// Agregar una luz puntual para iluminar áreas específicas
+const pointLight = new THREE.PointLight(0xff0000, 1, 100);
+pointLight.position.set(0, 20, 0);
+pointLight.castShadow = true;
+scene.add(pointLight);
+
+// Configurar propiedades de sombra para la luz puntual
+pointLight.shadow.mapSize.width = window.innerWidth; // Resolución del mapa de sombras
+pointLight.shadow.mapSize.height = window.innerHeight;
+pointLight.shadow.camera.near = 0.5; // Distancia cercana de la cámara de sombras
+pointLight.shadow.camera.far = 100; // Distancia lejana de la cámara de sombras
+
+
 
 const controls = new TrackballControls(camera, renderer.domElement);
 controls.rotateSpeed = 4;
