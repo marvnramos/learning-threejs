@@ -95,6 +95,7 @@ window.addEventListener('resize', function () {
     camera.updateProjectionMatrix();
 });
 
+
 const render = function () {
     requestAnimationFrame(render);
     controls.update();
