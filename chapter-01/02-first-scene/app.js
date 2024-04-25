@@ -1,6 +1,8 @@
 import * as THREE from './node_modules/three/build/three.module.js';
 import { TrackballControls } from './node_modules/three/examples/jsm/controls/TrackballControls.js';
 
+import Stats from 'stats.js';
+
 // Creando la escena
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -35,6 +37,7 @@ const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 cube.position.x = -4;
 cube.position.y = 3;
 cube.position.z = 0;
+cube.castShadow = true; // Permitir que el objeto emita sombras
 
 scene.add(cube);
 
@@ -44,6 +47,7 @@ const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x7777ff });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
 sphere.position.set(20, 4, 2);
+scene.castShadow = true; // Permitir que el objeto emita sombras
 scene.add(sphere);
 
 camera.position.x = -30;
@@ -95,9 +99,46 @@ window.addEventListener('resize', function () {
     camera.updateProjectionMatrix();
 });
 
+// function initStat(){
+//     const stats = new Stats();
+
+//     stats.setMode(0);
+//     stats.domElement.style.left = '0px';
+//     stats.domElement.style.top = '0px';
+
+//     document.body.appendChild(stats.domElement);
+//     return stats;
+// }
+
+const stats = new Stats();
+
+
+stats.showPanel(0); // show fps
+document.body.appendChild(stats.dom);
+
+// stats.showPanel(1); // show ms
+// document.body.appendChild(stats.dom);
+
+// stats.showPanel(2); // show mb
+// stats.showPanel(3); // show custom
+// document.body.appendChild(stats.dom);
+
+// let stats = initStat();
+
+let step = 0;
 
 const render = function () {
     requestAnimationFrame(render);
+    stats.update();
+
+    step+=0.04;
+    sphere.position.x = 20 + (10 * (Math.cos(step)));
+    sphere.position.y = 2 + (10 * Math.abs(Math.sin(step)));
+
+    cube.rotation.x += 0.02;
+    cube.rotation.y += 0.02;
+    cube.rotation.z += 0.02;
+
     controls.update();
     renderer.render(scene, camera);
 }
