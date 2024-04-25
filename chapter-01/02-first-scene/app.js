@@ -2,13 +2,19 @@ import * as THREE from './node_modules/three/build/three.module.js';
 import { TrackballControls } from './node_modules/three/examples/jsm/controls/TrackballControls.js';
 import * as dat from 'dat.gui';
 import Stats from 'stats.js';
-
+import { AsciiEffect } from './node_modules/three/examples/jsm/effects/AsciiEffect.js'; // Importa AsciiEffect
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-const axes = new THREE.AxesHelper(20);
-scene.add(axes);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setClearColor(0xEEEEEE);
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+// document.body.appendChild(renderer.domElement);
+
+// const axes = new THREE.AxesHelper(20);
+// scene.add(axes);
 
 const planeGeometry = new THREE.PlaneGeometry(60, 20);
 const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xcccccc });
@@ -64,7 +70,7 @@ pointLight.shadow.mapSize.height = window.innerHeight;
 pointLight.shadow.camera.near = 0.5;
 pointLight.shadow.camera.far = 100;
 
-const effect = THREE.AsciiEffect();// Usar create() en lugar de constructor directo
+const effect = new AsciiEffect(renderer); // Crea el efecto AsciiEffect con el renderer
 effect.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(effect.domElement);
 
