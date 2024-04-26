@@ -2,7 +2,7 @@ import * as THREE from './node_modules/three/build/three.module.js';
 import { TrackballControls } from './node_modules/three/examples/jsm/controls/TrackballControls.js';
 import * as dat from 'dat.gui';
 import Stats from 'stats.js';
-import { AsciiEffect } from './node_modules/three/examples/jsm/effects/AsciiEffect.js'; // Importa AsciiEffect
+import { AsciiEffect } from './node_modules/three/examples/jsm/effects/AsciiEffect.js'; 
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
