@@ -1,4 +1,4 @@
-# 🤪 | Examples view
+# 🤪 | Examples view - Chapter 01
 ### 01-basic-skeleton
 <img src="../assets/chapter-01/01-basic-skeleton.png" alt="03-materials-light" width="380" height="270">
 
