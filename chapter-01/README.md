@@ -14,3 +14,7 @@
 ### 05-control-gui
 <img src="../assets/05-control-gui.png" alt="03-materials-light" width="380" height="270">
 
+### 06-ascii-effect
+<img src="../assets/06-ascii-effect.png" alt="03-materials-light" width="380" height="270">
+
+
