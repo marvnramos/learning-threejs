@@ -1,9 +1,4 @@
-// import * as THREE from '../three/build/three.module.js';
 import * as THREE from 'three';
-import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
-import * as dat from 'dat.gui';
-import Stats from 'stats.js';
-import { AsciiEffect } from 'three/examples/jsm/effects/AsciiEffect.js'; 
 
 function init(){
     const scene = new THREE.Scene();
