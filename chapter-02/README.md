@@ -6,7 +6,7 @@
 <img src="../assets/chapter-02/02-foggy-scene.png" alt="03-materials-light" width="380" height="270">
 
 ### 03-forced-materials
-<img src="https://img.freepik.com/free-vector/404-error-with-landscape-concept-illustration_114360-7898.jpg" alt="03-materials-light" width="380" height="270">
+<img src="../assets/chapter-02/03-forced-materials.png" alt="03-materials-light" width="380" height="270">
 
 ### 04-geometries
 <img src="https://img.freepik.com/free-vector/404-error-with-landscape-concept-illustration_114360-7898.jpg" alt="03-materials-light" width="380" height="370">
