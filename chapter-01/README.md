@@ -7,3 +7,6 @@
 
 ### 03-materials-light
 <img src="../assets/03-materials-light.png" alt="03-materials-light" width="380" height="270">
+
+### 04-materials-light-animation
+<img src="../assets/04-materials.light.animation.png" alt="03-materials-light" width="380" height="370">
