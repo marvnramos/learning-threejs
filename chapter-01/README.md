@@ -10,3 +10,7 @@
 
 ### 04-materials-light-animation
 <img src="../assets/04-materials.light.animation.png" alt="03-materials-light" width="380" height="370">
+
+### 05-control-gui
+<img src="../assets/05-control-gui.png" alt="03-materials-light" width="380" height="270">
+
