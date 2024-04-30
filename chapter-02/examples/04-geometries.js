@@ -4,6 +4,8 @@ import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry.js'
 import Stats from 'stats.js';
 import * as SceneUtils from 'three/examples/jsm/utils/SceneUtils.js';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js';
+import { ParametricGeometries } from "three/examples/jsm/geometries/ParametricGeometries.js";
+
 
 const init = () => {
     const scene = new THREE.Scene();
@@ -23,7 +25,7 @@ const init = () => {
 
     document.body.appendChild(renderer.domElement);
 
-    const spotLight = new THREE.SpotLight(0xffffff, 50, 150, Math.PI / 4, 1); // Increased intensity to 2
+    const spotLight = new THREE.SpotLight(0xffffff, 100, 150, Math.PI / 4, 1); // Increased intensity to 2
     spotLight.position.set(10, 50, 10);
     spotLight.castShadow = true;
 
@@ -35,7 +37,7 @@ const init = () => {
     spotLight.shadow.camera.fov = 30;
     scene.add(spotLight);
 
-    const spotLight2 = new THREE.SpotLight(0x00ff00, 50, 150, Math.PI / 4, 1); // Increased intensity to 2
+    const spotLight2 = new THREE.SpotLight(0x00ff00, 100, 150, Math.PI / 4, 1); // Increased intensity to 2
     spotLight2.position.set(10, 50, -10);
     spotLight2.castShadow = true;
 
@@ -66,7 +68,7 @@ const init = () => {
 
     scene.add(plane);
 
-    const ambientLight = new THREE.AmbientLight(0x4c4c4c, 1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientLight);
 
     let step = 0;
@@ -100,12 +102,13 @@ const init = () => {
 
         geoms.push(new THREE.OctahedronGeometry(3));
 
+        geoms.push( new ParametricGeometry(ParametricGeometries.mobius3d, 20, 10))
+
         geoms.push(new THREE.TetrahedronGeometry(3));
 
         geoms.push(new THREE.TorusGeometry(3, 1, 10, 10));
 
         geoms.push(new THREE.TorusKnotGeometry(3, 0.5, 50, 20));
-        geoms.push(new ParametricGeometry(ParametricGeometry.mobius3d, 20, 10));
 
 
         let j = 0;
