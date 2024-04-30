@@ -25,7 +25,7 @@ const init = () => {
 
     document.body.appendChild(renderer.domElement);
 
-    const spotLight = new THREE.SpotLight(0xffffff, 100, 150, Math.PI / 4, 1); // Increased intensity to 2
+    const spotLight = new THREE.SpotLight(0xffffff, 100, 150, Math.PI / 4, 1);
     spotLight.position.set(10, 50, 10);
     spotLight.castShadow = true;
 
@@ -37,7 +37,7 @@ const init = () => {
     spotLight.shadow.camera.fov = 30;
     scene.add(spotLight);
 
-    const spotLight2 = new THREE.SpotLight(0x00ff00, 100, 150, Math.PI / 4, 1); // Increased intensity to 2
+    const spotLight2 = new THREE.SpotLight(0x00ff00, 100, 150, Math.PI / 4, 1);
     spotLight2.position.set(10, 50, -10);
     spotLight2.castShadow = true;
 
