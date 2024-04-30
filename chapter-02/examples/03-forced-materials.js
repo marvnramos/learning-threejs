@@ -10,14 +10,9 @@ const init = () => {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     scene.add(camera);
 
-    camera.position.x = -30;
-    camera.position.y = 40;
-    camera.position.z = 30;
-    camera.lookAt(scene.position);
-
     const renderer = new THREE.WebGLRenderer(/*{ antialias: true}*/);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xEEEEEE);
+    renderer.setClearColor(new THREE.Color(0x000000));
     renderer.shadowMap.enabled = true;
 
     const planeGeometry = new THREE.PlaneGeometry(60, 40, 1, 1);
@@ -32,7 +27,12 @@ const init = () => {
 
     scene.add(plane);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff);
+    camera.position.x = -30;
+    camera.position.y = 40;
+    camera.position.z = 30;
+    camera.lookAt(scene.position);
+
+    const ambientLight = new THREE.AmbientLight(0x0c0c0c,0.1);
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff);
@@ -102,15 +102,19 @@ const init = () => {
 
     document.body.appendChild(stats.dom);    
 
-    const controlMove = new TrackballControls(camera, renderer.domElement);
-    controlMove.rotateSpeed = 2;
-    controlMove.dynamicDampingFactor = 0.15;
+    // const controlMove = new TrackballControls(camera, renderer.domElement);
+    // controlMove.rotateSpeed = 2;
+    // controlMove.dynamicDampingFactor = 0.15;
+
+    const trackballControls = new TrackballControls(camera, renderer.domElement);
+    const clock = new THREE.Clock();
 
 
 
     const render = () => {
         stats.update();
-        controlMove.update();
+        // controlMove.update();
+        trackballControls.update(clock.getDelta());
 
         scene.traverse((e) => {
             if(e instanceof THREE.Mesh && e != plane){
