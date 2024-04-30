@@ -109,6 +109,14 @@ const init = () => {
     const trackballControls = new TrackballControls(camera, renderer.domElement);
     const clock = new THREE.Clock();
 
+    window.addEventListener('resize', function () {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+
     const render = () => {
         stats.update();
         // controlMove.update();

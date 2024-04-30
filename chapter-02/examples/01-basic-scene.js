@@ -102,7 +102,13 @@ const init = () => {
     controlMove.rotateSpeed = 2;
     controlMove.dynamicDampingFactor = 0.15;
 
-
+    window.addEventListener('resize', function () {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
 
     const render = () => {
         stats.update();
