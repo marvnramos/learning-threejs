@@ -109,8 +109,6 @@ const init = () => {
     const trackballControls = new TrackballControls(camera, renderer.domElement);
     const clock = new THREE.Clock();
 
-
-
     const render = () => {
         stats.update();
         // controlMove.update();
